@@ -1,0 +1,756 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="10月29日のSNSチーム会議で決まった要点、各自の目標、チャット全文、録画をまとめた会議記録です。">
+  <title>10月の振り返りと11月のアクション｜会議記録</title>
+  <style>
+    :root {
+      --white: #ffffff;
+      --canvas: #f7f7f7;
+      --ink: #171717;
+      --ink-soft: #595959;
+      --line: #dedede;
+      --line-soft: #eeeeee;
+      --blue: hsl(224 76% 42%);
+      --blue-dark: hsl(224 76% 30%);
+      --blue-pale: hsl(224 100% 97%);
+      --yellow: hsl(44 96% 48%);
+      --yellow-dark: hsl(44 100% 27%);
+      --yellow-pale: hsl(44 100% 94%);
+      --shadow: 0 18px 54px rgb(23 23 23 / 8%);
+      --radius: 18px;
+      --max: 1160px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: auto; scroll-padding-top: 84px; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--canvas);
+      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", "Noto Sans JP", sans-serif;
+      font-size: 16px;
+      line-height: 1.75;
+      text-rendering: optimizeLegibility;
+    }
+    a { color: inherit; }
+    button, input, summary { font: inherit; }
+    :focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; }
+    .skip-link {
+      position: fixed; z-index: 100; top: 8px; left: 8px; transform: translateY(-150%);
+      padding: 10px 14px; color: var(--white); background: var(--blue-dark); border-radius: 8px;
+    }
+    .skip-link:focus { transform: none; }
+    .visually-hidden {
+      position: absolute !important; width: 1px !important; height: 1px !important; padding: 0 !important;
+      margin: -1px !important; overflow: hidden !important; clip: rect(0, 0, 0, 0) !important;
+      white-space: nowrap !important; border: 0 !important;
+    }
+    .shell { width: min(calc(100% - 48px), var(--max)); margin-inline: auto; }
+    .topbar {
+      position: sticky; z-index: 20; top: 0; border-bottom: 1px solid var(--line);
+      background: rgb(255 255 255 / 94%); backdrop-filter: blur(16px);
+    }
+    .topbar-inner { min-height: 64px; display: flex; align-items: center; gap: 24px; }
+    .brand { margin-right: auto; font-weight: 800; text-decoration: none; letter-spacing: .02em; }
+    .desktop-nav { display: flex; align-items: center; gap: 22px; }
+    .desktop-nav a { color: var(--ink-soft); font-size: 14px; font-weight: 700; text-decoration: none; }
+    .desktop-nav a:hover { color: var(--blue); }
+    .header-action {
+      min-height: 44px; display: inline-flex; align-items: center; justify-content: center; padding: 0 17px;
+      color: var(--white); background: var(--blue); border-radius: 999px; font-weight: 800; text-decoration: none;
+    }
+    .mobile-menu { display: none; position: relative; }
+    .mobile-menu summary { min-width: 44px; min-height: 44px; display: grid; place-items: center; cursor: pointer; list-style: none; border: 1px solid var(--line); border-radius: 999px; }
+    .mobile-menu summary::-webkit-details-marker { display: none; }
+    .mobile-menu nav { position: absolute; top: 52px; right: 0; width: 190px; padding: 8px; background: var(--white); border: 1px solid var(--line); border-radius: 14px; box-shadow: var(--shadow); }
+    .mobile-menu nav a { display: block; min-height: 44px; padding: 9px 12px; border-radius: 9px; font-weight: 700; text-decoration: none; }
+    .mobile-menu nav a:hover { background: var(--blue-pale); color: var(--blue-dark); }
+    .hero { padding: 72px 0 52px; background: var(--white); border-bottom: 1px solid var(--line); }
+    .hero-grid { display: grid; grid-template-columns: minmax(0, 1fr) 400px; grid-template-areas: "copy core" "actions core"; gap: 22px 40px; align-items: center; }
+    .hero-copy { grid-area: copy; }
+    .eyebrow { display: flex; flex-wrap: wrap; gap: 6px 18px; margin: 0 0 14px; color: var(--blue-dark); font-size: 14px; font-weight: 800; letter-spacing: .08em; }
+    .eyebrow span { white-space: nowrap; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 { max-width: 12ch; margin-bottom: 18px; font-size: clamp(42px, 5.2vw, 68px); line-height: 1.06; letter-spacing: -.045em; }
+    .hero-summary { max-width: 660px; margin-bottom: 26px; color: var(--ink-soft); font-size: 18px; line-height: 1.8; }
+    .hero-actions { grid-area: actions; display: flex; flex-wrap: wrap; gap: 10px; }
+    .button {
+      min-height: 48px; display: inline-flex; align-items: center; justify-content: center; padding: 0 19px;
+      border: 1px solid var(--line); border-radius: 999px; background: var(--white); font-weight: 800; text-decoration: none;
+    }
+    .button.primary { color: var(--white); background: var(--blue); border-color: var(--blue); }
+    .button:hover { border-color: var(--blue); color: var(--blue-dark); }
+    .button.primary:hover { color: var(--white); background: var(--blue-dark); }
+    .core-card { grid-area: core; padding: 26px 28px; background: var(--yellow-pale); border: 1px solid var(--yellow); border-left: 6px solid var(--yellow); border-radius: 12px; }
+    .core-card > span { display: block; margin-bottom: 10px; color: var(--yellow-dark); font-size: 13px; font-weight: 900; letter-spacing: .08em; }
+    .core-card strong { display: block; font-size: clamp(25px, 2.6vw, 36px); line-height: 1.35; letter-spacing: -.025em; }
+    .core-card strong .nowrap { display: inline; margin: 0; color: inherit; font: inherit; letter-spacing: inherit; white-space: nowrap; }
+    .section { padding: 72px 0; }
+    .section.white { background: var(--white); border-block: 1px solid var(--line); }
+    .section-head { display: grid; grid-template-columns: minmax(0, 1fr) minmax(260px, 420px); gap: 40px; align-items: end; margin-bottom: 32px; }
+    .section-label { display: block; margin-bottom: 8px; color: var(--blue-dark); font-size: 13px; font-weight: 900; letter-spacing: .1em; }
+    h2 { margin-bottom: 0; font-size: clamp(30px, 4vw, 48px); line-height: 1.2; letter-spacing: -.035em; }
+    .section-lead { margin-bottom: 2px; color: var(--ink-soft); }
+    .takeaway-list { display: grid; grid-template-columns: repeat(3, 1fr); margin: 0; padding: 0; list-style: none; border-block: 1px solid var(--line); }
+    .takeaway { display: grid; grid-template-columns: 30px 1fr; gap: 12px; align-items: start; padding: 22px 24px; }
+    .takeaway + .takeaway { border-left: 1px solid var(--line); }
+    .takeaway b { display: grid; width: 30px; height: 30px; place-items: center; color: var(--white); background: var(--blue); border-radius: 50%; font-size: 14px; }
+    .takeaway p { margin-bottom: 0; font-size: 17px; font-weight: 800; line-height: 1.55; }
+    .decision { display: grid; grid-template-columns: minmax(250px, .7fr) minmax(0, 1.3fr); gap: 38px; margin-bottom: 38px; padding: 30px; background: var(--yellow-pale); border: 2px solid var(--yellow); border-radius: var(--radius); }
+    .decision-kicker { margin-bottom: 8px; color: var(--yellow-dark); font-size: 13px; font-weight: 900; }
+    .decision h3 { margin-bottom: 10px; font-size: clamp(25px, 3vw, 36px); line-height: 1.3; }
+    .decision p { margin-bottom: 16px; color: var(--ink-soft); }
+    .rule-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; align-self: center; }
+    .rule-step { padding: 18px 14px; background: var(--white); border: 1px solid var(--line); border-radius: 14px; text-align: center; }
+    .rule-step span { display: block; color: var(--blue-dark); font-size: 13px; font-weight: 900; }
+    .rule-step strong { display: block; margin-top: 5px; line-height: 1.4; }
+    .goals-table { border-block: 2px solid var(--ink); }
+    .goals-head, .goal-row { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(220px, .85fr) 120px; gap: 24px; align-items: start; }
+    .goals-head { padding: 10px 16px; color: var(--ink-soft); background: var(--canvas); font-size: 13px; font-weight: 900; }
+    .goal-row { padding: 19px 16px; border-top: 1px solid var(--line); }
+    .goal-main { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 12px; align-items: start; }
+    .goal-action { display: block; font-size: 19px; line-height: 1.45; }
+    .goal-detail { margin: 5px 0 0; color: var(--ink-soft); font-size: 14px; line-height: 1.6; }
+    .goal-result { margin: 0; line-height: 1.6; }
+    .speaker { flex: none; padding: 4px 8px; color: var(--ink-soft); background: var(--canvas); border: 1px solid var(--line); border-radius: 999px; font-size: 13px; font-weight: 700; }
+    .source-links { display: flex; flex-wrap: wrap; gap: 7px; }
+    .source-link {
+      min-height: 36px; display: inline-flex; align-items: center; padding: 6px 10px; color: var(--blue-dark);
+      background: var(--blue-pale); border: 1px solid hsl(224 70% 82%); border-radius: 999px; font-size: 13px; font-weight: 800; text-decoration: none;
+    }
+    .source-link:hover { color: var(--white); background: var(--blue); border-color: var(--blue); }
+    .theme-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .theme-card { display: grid; gap: 20px; padding: 26px; background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); }
+    .theme-card h3 { max-width: 18ch; margin-bottom: 8px; font-size: 25px; line-height: 1.35; }
+    .theme-card > div > p { margin-bottom: 0; color: var(--ink-soft); }
+    .mini-flow { display: grid; grid-template-columns: 1fr auto 1fr auto 1fr; gap: 8px; align-items: center; padding: 18px; background: var(--canvas); border-radius: 14px; }
+    .mini-flow strong { text-align: center; line-height: 1.45; }
+    .mini-flow span { color: var(--blue); font-size: 20px; font-weight: 900; }
+    .outcome-contrast { display: grid; background: var(--canvas); border-radius: 14px; }
+    .outcome-point { display: grid; grid-template-columns: 48px 1fr; gap: 10px; align-items: baseline; padding: 11px 14px; }
+    .outcome-point + .outcome-point { border-top: 1px solid var(--line); }
+    .outcome-point span { color: var(--blue-dark); font-size: 13px; font-weight: 900; }
+    .outcome-point strong { font-size: 14px; line-height: 1.45; }
+    .split-visual { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .split-visual div { padding: 17px; border-radius: 14px; }
+    .split-visual div:first-child { background: var(--blue-pale); border: 1px solid hsl(224 70% 82%); }
+    .split-visual div:last-child { background: var(--yellow-pale); border: 1px solid var(--yellow); }
+    .split-visual small { display: block; color: var(--ink-soft); font-size: 13px; font-weight: 800; }
+    .split-visual strong { display: block; margin-top: 3px; font-size: 18px; }
+    .loop-visual { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; padding: 18px; background: var(--canvas); border-radius: 14px; }
+    .loop-visual strong { padding: 8px 12px; background: var(--white); border: 1px solid var(--line); border-radius: 999px; }
+    .loop-visual span { color: var(--blue); font-weight: 900; }
+    .unassigned { margin-top: 18px; padding: 22px 24px; background: var(--canvas); border: 1px solid var(--line); border-left: 5px solid var(--yellow); border-radius: 14px; }
+    .unassigned h3 { margin-bottom: 8px; font-size: 20px; }
+    .unassigned > p { margin-bottom: 16px; color: var(--ink-soft); }
+    .unassigned-list { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .unassigned-item { padding: 16px; background: var(--white); border: 1px solid var(--line); border-radius: 12px; }
+    .unassigned-item strong { display: block; margin-bottom: 8px; }
+    .chat-tools { display: flex; gap: 12px; align-items: center; margin-bottom: 24px; }
+    .chat-search { flex: 1; min-width: 0; min-height: 48px; padding: 10px 14px; color: var(--ink); background: var(--white); border: 1px solid var(--line); border-radius: 12px; font-size: 16px; }
+    .chat-status { flex: none; color: var(--ink-soft); font-size: 13px; font-weight: 700; }
+    .chat-list { position: relative; max-width: 820px; margin-inline: auto; }
+    .chat-list::before { content: ""; position: absolute; top: 14px; bottom: 14px; left: 15px; width: 2px; background: var(--line); }
+    .chat-post { position: relative; margin: 0 0 16px 48px; padding: 20px 22px; background: var(--white); border: 1px solid var(--line); border-radius: 15px; }
+    .chat-post::before { content: ""; position: absolute; top: 24px; left: -41px; width: 14px; height: 14px; background: var(--blue); border: 5px solid var(--canvas); border-radius: 50%; }
+    .chat-meta { display: flex; gap: 16px; align-items: start; justify-content: space-between; margin-bottom: 12px; }
+    .chat-meta div { display: flex; flex-wrap: wrap; gap: 5px 12px; align-items: baseline; }
+    .chat-meta time, .chat-meta > span { color: var(--ink-soft); font-size: 13px; }
+    .chat-post pre { margin: 0; white-space: pre-wrap; overflow-wrap: anywhere; font: inherit; line-height: 1.75; }
+    .chat-empty { padding: 24px; text-align: center; background: var(--yellow-pale); border: 1px solid var(--yellow); border-radius: 14px; }
+    [hidden] { display: none !important; }
+    .recording-details { background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); overflow: clip; }
+    .recording-details > summary { min-height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 18px 24px; cursor: pointer; font-size: 19px; font-weight: 900; }
+    .recording-details > summary::after { content: "+"; color: var(--blue); font-size: 28px; line-height: 1; }
+    .recording-details[open] > summary::after { content: "−"; }
+    .recording-body { padding: 0 24px 24px; border-top: 1px solid var(--line); }
+    .video-note { margin: 18px 0; color: var(--ink-soft); font-size: 14px; }
+    .video-frame { overflow: hidden; background: #171717; border-radius: 14px; }
+    video { display: block; width: 100%; aspect-ratio: 16 / 8.1; background: #171717; }
+    .chapter-list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 9px; margin-top: 16px; }
+    .chapter-link { min-height: 52px; display: flex; gap: 10px; align-items: center; padding: 10px 12px; background: var(--canvas); border: 1px solid var(--line); border-radius: 11px; text-decoration: none; }
+    .chapter-link time { color: var(--blue-dark); font-size: 13px; font-weight: 900; }
+    .chapter-link span { font-size: 14px; font-weight: 700; line-height: 1.4; }
+    .footer { padding: 34px 0 44px; color: var(--ink-soft); background: var(--white); border-top: 1px solid var(--line); font-size: 13px; }
+    @media (max-width: 920px) {
+      .desktop-nav { display: none; }
+      .mobile-menu { display: block; }
+      .hero { padding-top: 48px; }
+      .hero-grid { grid-template-columns: 1fr; grid-template-areas: "copy" "core" "actions"; gap: 22px; }
+      .core-card { max-width: 620px; }
+      .section-head { grid-template-columns: 1fr; gap: 12px; }
+      .theme-grid { grid-template-columns: 1fr; }
+      .goals-head, .goal-row { grid-template-columns: minmax(0, 1fr) minmax(200px, .8fr) 112px; gap: 16px; }
+      .chapter-list { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 680px) {
+      .shell { width: min(calc(100% - 32px), var(--max)); }
+      .topbar-inner { gap: 10px; }
+      .brand { font-size: 14px; }
+      .header-action { min-width: 64px; padding-inline: 13px; font-size: 14px; }
+      .hero { padding: 42px 0 38px; }
+      h1 { font-size: 40px; }
+      .hero-summary { font-size: 16px; line-height: 1.7; }
+      .hero-actions .button { flex: 1 1 auto; }
+      .core-card { padding: 22px; }
+      .section { padding: 56px 0; }
+      .takeaway-list, .theme-grid, .unassigned-list, .chapter-list { grid-template-columns: 1fr; }
+      .takeaway { padding: 16px 4px; }
+      .takeaway + .takeaway { border-left: 0; border-top: 1px solid var(--line); }
+      .takeaway p { font-size: 16px; }
+      .decision { grid-template-columns: 1fr; gap: 18px; padding: 22px; }
+      .rule-steps { grid-template-columns: 1fr; }
+      .rule-step { display: flex; gap: 12px; align-items: center; justify-content: center; padding: 13px; }
+      .rule-step strong { margin: 0; }
+      .goals-head { display: none; }
+      .goal-row { grid-template-columns: 1fr; gap: 10px; padding: 17px 4px; }
+      .goal-result::before { content: "望む成果　"; color: var(--ink-soft); font-size: 13px; font-weight: 900; }
+      .mini-flow { grid-template-columns: 1fr; }
+      .mini-flow span { transform: rotate(90deg); text-align: center; }
+      .chat-tools { align-items: stretch; flex-direction: column; }
+      .chat-list::before { left: 7px; }
+      .chat-post { margin-left: 28px; padding: 18px; }
+      .chat-post::before { left: -28px; width: 12px; height: 12px; border-width: 4px; }
+      .chat-meta { flex-direction: column; gap: 2px; }
+      .recording-details > summary { min-height: 64px; padding: 15px 18px; font-size: 16px; }
+      .recording-body { padding: 0 16px 18px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">本文へ移動</a>
+  <header class="topbar">
+    <div class="shell topbar-inner">
+      <a class="brand" href="#top">10月29日 会議記録</a>
+      <nav class="desktop-nav" aria-label="ページ内メニュー">
+        <a href="#summary">要点</a><a href="#actions">次の行動</a><a href="#themes">テーマ</a><a href="#chat">チャット</a>
+      </nav>
+      <a class="header-action" href="#actions">行動を見る</a>
+      <details class="mobile-menu">
+        <summary aria-label="メニューを開く">☰</summary>
+        <nav aria-label="モバイルメニュー"><a href="#summary">要点</a><a href="#actions">次の行動</a><a href="#themes">テーマ</a><a href="#chat">チャット</a><a href="#recording" data-open-recording>録画</a></nav>
+      </details>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top">
+      <div class="shell hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow"><span>SNSチーム ミーティング記録</span><span>2026.10.29</span><span>47分21秒</span></p>
+          <h1>10月の振り返りと<br>11月のアクション</h1>
+          <p class="hero-summary">投稿・台本・編集の成果と詰まりを整理し、次に何を変えるかを各自の言葉で決めた会議です。</p>
+        </div>
+        <aside class="core-card" aria-label="会議の核">
+          <span>会議の核</span>
+          <strong>来月の行動を<span class="nowrap">1つ</span>、<span class="nowrap">数字で決める</span></strong>
+        </aside>
+        <div class="hero-actions">
+          <a class="button primary" href="#actions">各自の行動を見る</a>
+          <a class="button" href="#chat">チャット原文を見る</a>
+          <a class="button" href="#recording" data-open-recording>録画を確認する</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="summary">
+      <div class="shell">
+        <div class="section-head">
+          <div><span class="section-label">01　要点</span><h2>まず押さえる3点</h2></div>
+          <p class="section-lead">再生数だけで終わらず、次の改善と自分で動かせる行動までつなげます。</p>
+        </div>
+        <ol class="takeaway-list">
+          <li class="takeaway"><b>1</b><p>再生の先のフォロー・成約を見る</p></li>
+          <li class="takeaway"><b>2</b><p>幅広く試し、反応を見て改善する</p></li>
+          <li class="takeaway"><b>3</b><p>抱え込まず、相談して改善する</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section white" id="actions">
+      <div class="shell">
+        <div class="section-head">
+          <div><span class="section-label">02　次の行動</span><h2>来月、何をするか</h2></div>
+          <p class="section-lead">チャットに書かれた行動と、望む成果を分けて比較します。</p>
+        </div>
+        <div class="goals-table" aria-label="各自が書いた目標">
+          <div class="goals-head" aria-hidden="true"><span>行動</span><span>望む成果</span><span>原文</span></div>
+          <article class="goal-row" id="first-individual-action">
+            <div class="goal-main"><div><strong class="goal-action">相談を10個出す</strong><p class="goal-detail">編集・FBの理由・AI自動化の不明点</p></div><span class="speaker">Xさん（A）</span></div>
+            <p class="goal-result">分からないことを残さない</p>
+            <div class="source-links"><a class="source-link" href="#chat-014">行動 23:39</a><a class="source-link" href="#chat-008">成果 23:32</a></div>
+          </article>
+          <article class="goal-row">
+            <div class="goal-main"><strong class="goal-action">台本を12本書く</strong><span class="speaker">Xさん（G）</span></div>
+            <p class="goal-result">自分の台本を2本万バズさせる</p>
+            <a class="source-link" href="#chat-009">23:34の投稿</a>
+          </article>
+          <article class="goal-row">
+            <div class="goal-main"><div><strong class="goal-action">台本を8本作る</strong><p class="goal-detail">フィードバックを反映</p></div><span class="speaker">Xさん（F）</span></div>
+            <p class="goal-result">伸びる台本にする</p>
+            <a class="source-link" href="#chat-010">23:34の投稿</a>
+          </article>
+          <article class="goal-row">
+            <div class="goal-main"><div><strong class="goal-action">冒頭3秒を改善する</strong><p class="goal-detail">台本の質、特に冒頭のフック</p></div><span class="speaker">Xさん（C）</span></div>
+            <p class="goal-result">万バズ1本</p>
+            <a class="source-link" href="#chat-011">23:34の投稿</a>
+          </article>
+          <article class="goal-row">
+            <div class="goal-main"><div><strong class="goal-action">毎日4件アウトプット</strong><p class="goal-detail">ビジネス・セールス・SNS・その日のMTG</p></div><span class="speaker">Xさん（E）</span></div>
+            <p class="goal-result">チャットには記載なし</p>
+            <a class="source-link" href="#chat-012">23:35の投稿</a>
+          </article>
+          <article class="goal-row">
+            <div class="goal-main"><div><strong class="goal-action">トーク7本・アフレコ3本</strong><p class="goal-detail">素材が生きる台本と編集指示を出す</p></div><span class="speaker">Xさん（D）</span></div>
+            <p class="goal-result">トーク2本、アフレコ1本をバズらせる</p>
+            <a class="source-link" href="#chat-013">23:36の投稿</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="themes">
+      <div class="shell">
+        <div class="section-head">
+          <div><span class="section-label">03　重要テーマ</span><h2>会議で見えた3つ</h2></div>
+          <p class="section-lead">実績・課題・希望を分けて確認できます。リンクからチャット原文や録画時刻へ移動できます。</p>
+        </div>
+        <div class="theme-grid">
+          <article class="theme-card" id="topic-outcome">
+            <div><h3>再生の先を、フォローと成約へ</h3><p>万バズはできましたが、フォロワーには結びつきませんでした。特典は質を上げ、成約へつなげたいという希望です。</p></div>
+            <div class="outcome-contrast" aria-label="実績・課題・希望を区別">
+              <div class="outcome-point" data-theme-role="実績"><span>実績</span><strong>格付け系で万バズ</strong></div>
+              <div class="outcome-point" data-theme-role="課題"><span>課題</span><strong>フォロワーに結びつかなかった</strong></div>
+              <div class="outcome-point" data-theme-role="希望"><span>希望</span><strong>特典の質を上げ、成約へ</strong></div>
+            </div>
+            <div class="source-links"><a class="source-link" href="#chat-004">チャット 23:16</a><a class="source-link" href="#chat-007">チャット 23:17</a><a class="source-link" href="#recording" data-seconds="2820">録画 47:00</a></div>
+          </article>
+          <article class="theme-card" id="topic-quality">
+            <div><h3>幅広く試し、反応で絞る</h3><p>世界観を先に固定せず、受ける方向を確かめます。</p></div>
+            <div class="mini-flow" aria-label="改善の流れ"><strong>試す</strong><span>→</span><strong>反応を見る</strong><span>→</span><strong>絞る</strong></div>
+            <div class="source-links"><a class="source-link" href="#chat-003">チャット 23:14</a><a class="source-link" href="#chat-006">チャット 23:17</a><a class="source-link" href="#recording" data-seconds="1125">録画 18:45</a></div>
+          </article>
+          <article class="theme-card" id="topic-feedback">
+            <div><h3>止まる前に相談する</h3><p>制作の途中に相談とFBを入れ、次へ反映します。</p></div>
+            <div class="loop-visual" aria-label="相談と改善の循環"><strong>作る</strong><span>→</span><strong>相談</strong><span>→</span><strong>FB</strong><span>→</span><strong>反映</strong></div>
+            <div class="source-links"><a class="source-link" href="#chat-001">チャット 23:11</a><a class="source-link" href="#chat-014">チャット 23:39</a><a class="source-link" href="#recording" data-seconds="2675">録画 44:35</a></div>
+          </article>
+        </div>
+        <aside class="unassigned" aria-labelledby="unassigned-title">
+          <h3 id="unassigned-title">会議内で出た具体策</h3>
+          <p>音声の話者を特定できないため、個人の担当にはしていません。</p>
+          <div class="unassigned-list">
+            <div class="unassigned-item"><strong>参考動画3つから、伸びた要因を抜き出す</strong><a class="source-link" href="#recording" data-seconds="2507">録画 41:47</a></div>
+            <div class="unassigned-item"><strong>撮影素材が生きる台本を作る</strong><a class="source-link" href="#recording" data-seconds="2664">録画 44:24</a></div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section white" id="chat">
+      <div class="shell">
+        <div class="section-head">
+          <div><span class="section-label">04　チャット全文</span><h2>当日の原文を確認する</h2></div>
+          <p class="section-lead">14件を投稿順のまま表示しています。時刻、改行、重複を保持し、個人名だけ匿名化しています。</p>
+        </div>
+        <div class="chat-tools" role="search">
+          <label class="visually-hidden" for="chat-search">チャット内を検索</label>
+          <input class="chat-search" id="chat-search" type="search" placeholder="チャット内を検索（例：台本、FB、相談）" autocomplete="off">
+          <span class="chat-status" id="chat-status" aria-live="polite">14件すべて表示</span>
+        </div>
+        <p class="chat-empty" id="chat-empty" hidden>一致する投稿はありません。</p>
+        <div class="chat-list">
+<article class="chat-post" id="chat-001" data-chat-post data-search="2026-10-29 23:11:08 Xさん（A） 全員へ ◯良かった点
+・リール動画の編集に関してFBを沢山いただき着手したての時よりは知識を増やせた
+・Xさん（B）に気持ちを打ち明けたことにより
+自分のやるべきことが明確になり先が見えるようになった(自分で編集→AIに投げて自動化)
+
+◯悪かった点
+・悩みを一人で抱えて放置した結果
+投稿本数、納期に影響を与えてしまった
+" tabindex="-1">
+  <header class="chat-meta">
+    <div><strong>Xさん（A）</strong><time datetime="2026-10-29T23:11:08">2026-10-29 23:11:08</time></div>
+    <span>全員へ</span>
+  </header>
+  <pre data-chat-body="1">◯良かった点
+・リール動画の編集に関してFBを沢山いただき着手したての時よりは知識を増やせた
+・Xさん（B）に気持ちを打ち明けたことにより
+自分のやるべきことが明確になり先が見えるようになった(自分で編集→AIに投げて自動化)
+
+◯悪かった点
+・悩みを一人で抱えて放置した結果
+投稿本数、納期に影響を与えてしまった
+</pre>
+</article>
+<article class="chat-post" id="chat-002" data-chat-post data-search="2026-10-29 23:13:13 Xさん（B） 全員へ ◯良かった点
+・リール動画の編集に関してFBを沢山いただき着手したての時よりは知識を増やせた
+・Xさん（B）に気持ちを打ち明けたことにより
+自分のやるべきことが明確になり先が見えるようになった(自分で編集→AIに投げて自動化)
+
+◯悪かった点
+・悩みを一人で抱えて放置した結果
+投稿本数、納期に影響を与えてしまった
+" tabindex="-1">
+  <header class="chat-meta">
+    <div><strong>Xさん（B）</strong><time datetime="2026-10-29T23:13:13">2026-10-29 23:13:13</time></div>
+    <span>全員へ</span>
+  </header>
+  <pre data-chat-body="2">◯良かった点
+・リール動画の編集に関してFBを沢山いただき着手したての時よりは知識を増やせた
+・Xさん（B）に気持ちを打ち明けたことにより
+自分のやるべきことが明確になり先が見えるようになった(自分で編集→AIに投げて自動化)
+
+◯悪かった点
+・悩みを一人で抱えて放置した結果
+投稿本数、納期に影響を与えてしまった
+</pre>
+</article>
+<article class="chat-post" id="chat-003" data-chat-post data-search="2026-10-29 23:14:15 Xさん（C） 全員へ ■改善点
+投稿数→2日に1回投稿
+アカウント全体の世界観の統一
+FBの遅さ
+伸びてるアカウント全体の雰囲気をTTP
+vlog系を増やしたい
+
+■良かった点
+BGM作成
+アカウントのイメージカラーを共有
+" tabindex="-1">
+  <header class="chat-meta">
+    <div><strong>Xさん（C）</strong><time datetime="2026-10-29T23:14:15">2026-10-29 23:14:15</time></div>
+    <span>全員へ</span>
+  </header>
+  <pre data-chat-body="3">■改善点
+投稿数→2日に1回投稿
+アカウント全体の世界観の統一
+FBの遅さ
+伸びてるアカウント全体の雰囲気をTTP
+vlog系を増やしたい
+
+■良かった点
+BGM作成
+アカウントのイメージカラーを共有
+</pre>
+</article>
+<article class="chat-post" id="chat-004" data-chat-post data-search="2026-10-29 23:16:10 Xさん（D） 全員へ 良かった事：トークリールの格付け系で伸ばしにいってマンバズさせることができた。画質だったり風景のいい場所でのトークリールはあり。プロフィールやアイコンを変更できた。
+今後のXさん（H）の方向性が決まった。
+毎週ミーティングを開催し台本、演者、編集で方向性の確認やそれぞれ感じたことを共有する場を設けた。
+
+
+悪かった事：マンバズさせたにも関わらずフォロワーに結びつける事ができなかった。ただマン人受けするだけの動画になってしまった。
+" tabindex="-1">
+  <header class="chat-meta">
+    <div><strong>Xさん（D）</strong><time datetime="2026-10-29T23:16:10">2026-10-29 23:16:10</time></div>
+    <span>全員へ</span>
+  </header>
+  <pre data-chat-body="4">良かった事：トークリールの格付け系で伸ばしにいってマンバズさせることができた。画質だったり風景のいい場所でのトークリールはあり。プロフィールやアイコンを変更できた。
+今後のXさん（H）の方向性が決まった。
+毎週ミーティングを開催し台本、演者、編集で方向性の確認やそれぞれ感じたことを共有する場を設けた。
+
+
+悪かった事：マンバズさせたにも関わらずフォロワーに結びつける事ができなかった。ただマン人受けするだけの動画になってしまった。
+</pre>
+</article>
+<article class="chat-post" id="chat-005" data-chat-post data-search="2026-10-29 23:16:22 Xさん（E） 全員へ 良かったこと
+・Xさん（I）アカウントの編集が定まり始めたこと
+一瞬停滞した時期もあったがフックChatGPTと演出にこだわることで再生数が取れることが分かってきたため台本作成にも活かす
+・Xさん（H）アカウントは万バズ達成したのが良かった。引き続きXさん（D）とXさん（H）と打ち合わせしながら、分析続ける
+・Xさん（J）アカウントもXさん（C）と編集の方向性進めながら制作できた
+・低スペWidowsから脱却しMacを購入したため本格的にAIの活用が始まった→Codexぶん回して色々試している最中なのでこれから
+・ローンチ動画制作を通して編集の幅が大きく広がった
+
+悪かったこと
+・Xさん（I）アカウントの投稿がギリギリになった→クオリティを求めて細かい調整を繰り返した結果のため、ネガティブなこととは思っていない。引き続き自分のディレクション力とチームの編集力を向上していく
+・Xさん（A）動画に対するFBが一回で完成まで持っていけるほど細かくFBできていない。もっと細かくラリー減らせるようにディレクションする
+" tabindex="-1">
+  <header class="chat-meta">
+    <div><strong>Xさん（E）</strong><time datetime="2026-10-29T23:16:22">2026-10-29 23:16:22</time></div>
+    <span>全員へ</span>
+  </header>
+  <pre data-chat-body="5">良かったこと
+・Xさん（I）アカウントの編集が定まり始めたこと
+一瞬停滞した時期もあったがフックChatGPTと演出にこだわることで再生数が取れることが分かってきたため台本作成にも活かす
+・Xさん（H）アカウントは万バズ達成したのが良かった。引き続きXさん（D）とXさん（H）と打ち合わせしながら、分析続ける
+・Xさん（J）アカウントもXさん（C）と編集の方向性進めながら制作できた
+・低スペWidowsから脱却しMacを購入したため本格的にAIの活用が始まった→Codexぶん回して色々試している最中なのでこれから
+・ローンチ動画制作を通して編集の幅が大きく広がった
+
+悪かったこと
+・Xさん（I）アカウントの投稿がギリギリになった→クオリティを求めて細かい調整を繰り返した結果のため、ネガティブなこととは思っていない。引き続き自分のディレクション力とチームの編集力を向上していく
+・Xさん（A）動画に対するFBが一回で完成まで持っていけるほど細かくFBできていない。もっと細かくラリー減らせるようにディレクションする
+</pre>
+</article>
+<article class="chat-post" id="chat-006" data-chat-post data-search="2026-10-29 23:17:09 Xさん（F） 全員へ ◯良かった点
+・Xさん（I）のアカウントを伸ばすうえで編集の重点をXさん（E）に遠慮なくぶつけてバズ動画も10月後半に複数本出せた
+
+◯悪かった点
+・台本のリサーチから添削の精度が低い
+具体的には、メンタルモデルの意識や具体化⇔抽象化の言葉選び、ビジュアライズなど
+" tabindex="-1">
+  <header class="chat-meta">
+    <div><strong>Xさん（F）</strong><time datetime="2026-10-29T23:17:09">2026-10-29 23:17:09</time></div>
+    <span>全員へ</span>
+  </header>
+  <pre data-chat-body="6">◯良かった点
+・Xさん（I）のアカウントを伸ばすうえで編集の重点をXさん（E）に遠慮なくぶつけてバズ動画も10月後半に複数本出せた
+
+◯悪かった点
+・台本のリサーチから添削の精度が低い
+具体的には、メンタルモデルの意識や具体化⇔抽象化の言葉選び、ビジュアライズなど
+</pre>
+</article>
+<article class="chat-post" id="chat-007" data-chat-post data-search="2026-10-29 23:17:14 Xさん（G） 全員へ ⚪︎良かった点
+投稿が間に合うように進捗を管理できた
+特典のクオリティは以前よりは上がった
+
+⚪︎悪かった点
+特典作成がギリギリになってしまった
+特典作成のクオリティをもっと上げて、成約に繋げたい
+：ONEの先輩方に添削していただく機会を作りたい
+" tabindex="-1">
+  <header class="chat-meta">
+    <div><strong>Xさん（G）</strong><time datetime="2026-10-29T23:17:14">2026-10-29 23:17:14</time></div>
+    <span>全員へ</span>
+  </header>
+  <pre data-chat-body="7">⚪︎良かった点
+投稿が間に合うように進捗を管理できた
+特典のクオリティは以前よりは上がった
+
+⚪︎悪かった点
+特典作成がギリギリになってしまった
+特典作成のクオリティをもっと上げて、成約に繋げたい
+：ONEの先輩方に添削していただく機会を作りたい
+</pre>
+</article>
+<article class="chat-post" id="chat-008" data-chat-post data-search="2026-10-29 23:32:53 Xさん（A） 全員へ 分からないことをそのままにしない。
+" tabindex="-1">
+  <header class="chat-meta">
+    <div><strong>Xさん（A）</strong><time datetime="2026-10-29T23:32:53">2026-10-29 23:32:53</time></div>
+    <span>全員へ</span>
+  </header>
+  <pre data-chat-body="8">分からないことをそのままにしない。
+</pre>
+</article>
+<article class="chat-post" id="chat-009" data-chat-post data-search="2026-10-29 23:34:28 Xさん（G） 全員へ 自分の作ったXさん（B）垢台本を2本万バズさせる
+↑
+台本を12本書く。（「質は量から生まれる」を実践する）
+" tabindex="-1">
+  <header class="chat-meta">
+    <div><strong>Xさん（G）</strong><time datetime="2026-10-29T23:34:28">2026-10-29 23:34:28</time></div>
+    <span>全員へ</span>
+  </header>
+  <pre data-chat-body="9">自分の作ったXさん（B）垢台本を2本万バズさせる
+↑
+台本を12本書く。（「質は量から生まれる」を実践する）
+</pre>
+</article>
+<article class="chat-post" id="chat-010" data-chat-post data-search="2026-10-29 23:34:34 Xさん（F） 全員へ Xさん（I）のフィードバックを反映＝伸びる台本を8本作成する
+" tabindex="-1">
+  <header class="chat-meta">
+    <div><strong>Xさん（F）</strong><time datetime="2026-10-29T23:34:34">2026-10-29 23:34:34</time></div>
+    <span>全員へ</span>
+  </header>
+  <pre data-chat-body="10">Xさん（I）のフィードバックを反映＝伸びる台本を8本作成する
+</pre>
+</article>
+<article class="chat-post" id="chat-011" data-chat-post data-search="2026-10-29 23:34:36 Xさん（C） 全員へ 台本の質を上げる
+特に冒頭3秒のフックを改善して万バズ1本
+" tabindex="-1">
+  <header class="chat-meta">
+    <div><strong>Xさん（C）</strong><time datetime="2026-10-29T23:34:36">2026-10-29 23:34:36</time></div>
+    <span>全員へ</span>
+  </header>
+  <pre data-chat-body="11">台本の質を上げる
+特に冒頭3秒のフックを改善して万バズ1本
+</pre>
+</article>
+<article class="chat-post" id="chat-012" data-chat-post data-search="2026-10-29 23:35:47 Xさん（E） 全員へ アウトプットを毎日4件行う
+ビジネス、セールス、SNS、その日のMTG
+" tabindex="-1">
+  <header class="chat-meta">
+    <div><strong>Xさん（E）</strong><time datetime="2026-10-29T23:35:47">2026-10-29 23:35:47</time></div>
+    <span>全員へ</span>
+  </header>
+  <pre data-chat-body="12">アウトプットを毎日4件行う
+ビジネス、セールス、SNS、その日のMTG
+</pre>
+</article>
+<article class="chat-post" id="chat-013" data-chat-post data-search="2026-10-29 23:36:59 Xさん（D） 全員へ トークリール７本中2本
+アフレコリール３本中1本バズらせる
+Xさん（H）の素材が生きるような台本、編集の指示だし
+" tabindex="-1">
+  <header class="chat-meta">
+    <div><strong>Xさん（D）</strong><time datetime="2026-10-29T23:36:59">2026-10-29 23:36:59</time></div>
+    <span>全員へ</span>
+  </header>
+  <pre data-chat-body="13">トークリール７本中2本
+アフレコリール３本中1本バズらせる
+Xさん（H）の素材が生きるような台本、編集の指示だし
+</pre>
+</article>
+<article class="chat-post" id="chat-014" data-chat-post data-search="2026-10-29 23:39:22 Xさん（A） 全員へ 報連相の中でも「相談」を10個
+・編集スタイル
+・FBに対して不明な点やその理由など
+・AI自動化に関して分からないこと
+" tabindex="-1">
+  <header class="chat-meta">
+    <div><strong>Xさん（A）</strong><time datetime="2026-10-29T23:39:22">2026-10-29 23:39:22</time></div>
+    <span>全員へ</span>
+  </header>
+  <pre data-chat-body="14">報連相の中でも「相談」を10個
+・編集スタイル
+・FBに対して不明な点やその理由など
+・AI自動化に関して分からないこと
+</pre>
+</article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="recording">
+      <div class="shell">
+        <div class="section-head">
+          <div><span class="section-label">05　補助録画</span><h2>必要な場面だけ確認する</h2></div>
+          <p class="section-lead">録画は初期状態で再生しません。時刻リンクを押したときだけ、該当位置から再生します。</p>
+        </div>
+        <details class="recording-details" id="recording-details">
+          <summary>録画と6つの章を見る</summary>
+          <div class="recording-body">
+            <p class="video-note">この配信では、動画の読み込みにブラウザのService Worker機能を使います。対応していない環境では再生できません。</p>
+            <div class="video-frame">
+              <video id="meeting-video" controls preload="none" poster="assets/video-poster.svg" tabindex="-1" aria-label="会議録画 47分21秒">
+                <source data-src="assets/meeting.mp4" type="video/mp4">
+                お使いのブラウザは動画再生に対応していません。
+              </video>
+            </div>
+            <noscript><p class="video-note">録画の再生と時刻移動にはJavaScriptが必要です。章の一覧とチャット本文はそのまま読めます。</p></noscript>
+            <nav class="chapter-list" aria-label="録画の章">
+              <a class="chapter-link" href="#recording" data-seconds="25"><time>00:25</time><span>10月の目標と現状</span></a>
+              <a class="chapter-link" href="#recording" data-seconds="294"><time>04:54</time><span>良かった点・悪かった点</span></a>
+              <a class="chapter-link" href="#recording" data-seconds="955"><time>15:55</time><span>各自の振り返り</span></a>
+              <a class="chapter-link" href="#recording" data-seconds="1759"><time>29:19</time><span>来月の1行動</span></a>
+              <a class="chapter-link" href="#recording" data-seconds="2281"><time>38:01</time><span>各自の行動発表</span></a>
+              <a class="chapter-link" href="#recording" data-seconds="2744"><time>45:44</time><span>次回確認とまとめ</span></a>
+            </nav>
+          </div>
+        </details>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer"><div class="shell">録画の映像・音声は原本のままです。</div></footer>
+
+  <script>
+  (() => {
+    const details = document.querySelector('#recording-details');
+    const mobileMenu = document.querySelector('.mobile-menu');
+    const video = document.querySelector('#meeting-video');
+    const source = video?.querySelector('source[data-src]');
+    let preparing;
+    let recordingRequest = 0;
+
+    mobileMenu?.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => { mobileMenu.open = false; });
+    });
+
+    const enableVideo = () => {
+      if (source && !source.src) {
+        source.src = source.dataset.src;
+        video.load();
+      }
+    };
+
+    const prepareVideo = () => {
+      if (source?.src) return Promise.resolve(true);
+      if (preparing) return preparing;
+      preparing = Promise.resolve().then(() => {
+        if (!source) return false;
+        enableVideo();
+        return true;
+      });
+      return preparing;
+    };
+
+    const openRecording = async () => {
+      const token = ++recordingRequest;
+      if (details) details.open = true;
+      const ready = await prepareVideo();
+      return { ready: Boolean(ready && details?.open && token === recordingRequest), token };
+    };
+
+    document.querySelectorAll('[data-open-recording]').forEach((link) => {
+      link.addEventListener('click', (event) => {
+        event.preventDefault();
+        openRecording();
+        document.querySelector('#recording')?.scrollIntoView({ behavior: 'auto' });
+      });
+    });
+
+    details?.addEventListener('toggle', () => {
+      if (details.open) prepareVideo();
+      else {
+        recordingRequest += 1;
+        video?.pause();
+      }
+    });
+
+    document.querySelectorAll('[data-seconds]').forEach((link) => {
+      link.addEventListener('click', async (event) => {
+        event.preventDefault();
+        const seconds = Number(link.dataset.seconds || 0);
+        const request = await openRecording();
+        if (!request.ready || !video) return;
+        const seek = () => {
+          if (request.token !== recordingRequest || !details?.open) {
+            video.pause();
+            return;
+          }
+          video.currentTime = Number.isFinite(video.duration) ? Math.min(seconds, video.duration) : seconds;
+          const playback = video.play();
+          if (playback?.catch) playback.catch(() => {});
+          video.scrollIntoView({ behavior: 'auto', block: 'center' });
+          video.focus({ preventScroll: true });
+        };
+        if (video.readyState >= 1) seek();
+        else video.addEventListener('loadedmetadata', seek, { once: true });
+      });
+    });
+
+    const search = document.querySelector('#chat-search');
+    const posts = [...document.querySelectorAll('[data-chat-post]')];
+    const status = document.querySelector('#chat-status');
+    const empty = document.querySelector('#chat-empty');
+    const normalize = (value) => (value || '').normalize('NFKC').toLocaleLowerCase('ja');
+    const applyChatSearch = () => {
+      const query = normalize(search?.value.trim());
+      let visible = 0;
+      posts.forEach((post) => {
+        const match = !query || normalize(post.dataset.search).includes(query);
+        post.hidden = !match;
+        if (match) visible += 1;
+      });
+      if (status) status.textContent = query ? `${visible}件 / 全${posts.length}件` : `${posts.length}件すべて表示`;
+      if (empty) empty.hidden = visible !== 0;
+    };
+    search?.addEventListener('input', applyChatSearch);
+    applyChatSearch();
+
+    document.querySelectorAll('a[href^="#chat-"]').forEach((link) => {
+      link.addEventListener('click', () => {
+        if (search) search.value = '';
+        applyChatSearch();
+        const target = document.querySelector(link.getAttribute('href'));
+        requestAnimationFrame(() => target?.focus({ preventScroll: true }));
+      });
+    });
+  })();
+  </script>
+</body>
+</html>

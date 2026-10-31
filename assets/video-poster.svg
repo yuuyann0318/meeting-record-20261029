@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="810" viewBox="0 0 1600 810" role="img" aria-labelledby="title desc">
+  <title id="title">会議録画 47分21秒</title>
+  <desc id="desc">無彩色の背景に青の再生マークと黄色の時刻表示を配置した動画ポスター</desc>
+  <rect width="1600" height="810" fill="#f7f7f7"/>
+  <rect x="72" y="72" width="1456" height="666" rx="48" fill="#ffffff" stroke="#dedede" stroke-width="4"/>
+  <circle cx="800" cy="328" r="112" fill="hsl(224 76% 42%)"/>
+  <path d="M768 264 L768 392 L878 328Z" fill="#ffffff"/>
+  <rect x="660" y="488" width="280" height="58" rx="29" fill="hsl(44 100% 88%)" stroke="hsl(44 96% 48%)" stroke-width="3"/>
+  <text x="800" y="528" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Hiragino Sans','Yu Gothic',sans-serif" font-size="28" font-weight="800" fill="hsl(44 100% 27%)">47分21秒</text>
+  <text x="800" y="614" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Hiragino Sans','Yu Gothic',sans-serif" font-size="42" font-weight="800" fill="#171717">会議録画</text>
+  <text x="800" y="662" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Hiragino Sans','Yu Gothic',sans-serif" font-size="24" fill="#595959">必要な場面だけ確認できます</text>
+</svg>
